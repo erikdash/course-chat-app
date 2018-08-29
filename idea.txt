@@ -1,3 +1,3 @@
 1.	Name
 2.	Chat application for all classes at Pitt. Can join, message each other, share files/links/etc.
-3.	Web application, MVC pattern, Java? (or C#/.NET depending on limitations).
+3.	Web application, MVC pattern, Java/JUnit or C#/.NET/NUnit.
