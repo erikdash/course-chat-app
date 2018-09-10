@@ -12,8 +12,10 @@ Functional
 
 
 Non-functional
-1. all users should have a pitt.edu email address
-2. all classes should be available to any user
-3. updates to page should be asynchronous
-4. class navigation should be hierarchical (dept, class, section of class)
-5. site should handle 100 simultaneous users/requests
+1. program should be a web application
+2. application should support Chrome, Firefox, Edge
+3. all users should have a pitt.edu email address
+4. all classes should be available to any user
+5. updates to page should be asynchronous
+6. class navigation should be hierarchical (dept, class, section of class)
+7. site should handle 100 simultaneous users/requests
