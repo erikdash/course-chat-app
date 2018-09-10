@@ -6,8 +6,8 @@ Functional
 5. user should be able to star a class
 6. user should be able to unstar a class
 7. user should be able to send messages in the class chat room
-8. user can upload files to class chat room
-9. if file upload unsuccessful, error message should  be displayed
+8. user should be able to upload files to class chat room
+9. if file upload unsuccessful, error message should be displayed
 10. user should be able to delete their account
 
 
