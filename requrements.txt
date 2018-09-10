@@ -1,0 +1,19 @@
+Functional
+1. user should be to create an account
+2. user should click verification email to confirm account creation
+3. user should be able to log into system with email and password
+4. if user is not found, error message should be displayed
+5. user should be able to star a class
+6. user should be able to unstar a class
+7. user should be able to send messages in the class chat room
+8. user can upload files to class chat room
+9. if file upload unsuccessful, error message should  be displayed
+10. user should be able to delete their account
+
+
+Non-functional
+1. all users should have a pitt.edu email address
+2. all classes should be available to any user
+3. updates to page should be asynchronous
+4. class navigation should be hierarchical (dept, class, section of class)
+5. site should handle 100 simultaneous users/requests
