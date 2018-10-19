@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sender: 
+  date_sent: 2018-10-19 14:56:35
+  conents: MyString
+  chat_room: 
+
+two:
+  sender: 
+  date_sent: 2018-10-19 14:56:35
+  conents: MyString
+  chat_room: 
