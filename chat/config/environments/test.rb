@@ -43,4 +43,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Configure the mailer to create full URLs in emails:
+  # In production it should be your app's domain name.
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 end

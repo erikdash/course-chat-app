@@ -1,2 +1,26 @@
-<h1>Welcome#signup</h1>
-<p>Find me in app/views/welcome/signup.html.erb</p>
+<div class="welcome-wrapper">
+  <div class="container">
+    <h1> Its lit </h2>
+    <h2><%= t(".title") %></h2>
+
+    <%= form_for @user do |form| %>
+      <div class="text-field">
+        <%= form.label :email %>
+        <%= form.text_field :email, type: 'email' %>
+      </div>
+
+      <div class="password-field">
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+      </div>
+
+      <div class="submit-field">
+        <%= form.submit %>
+      </div>
+
+      <div class="other-links">
+        <%= link_to t(".sign_in"), sign_in_path %>
+      </div>
+    <% end %>
+  </div>
+</div>

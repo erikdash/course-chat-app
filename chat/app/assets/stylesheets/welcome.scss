@@ -1,3 +1,21 @@
-// Place all the styles related to the Welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.welcome-wrapper {
+  height: 100vh;
+  background: #f6cd61 ;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 960px;
+    margin: 0 auto;
+
+    form {
+      height: 600px;
+      width: 800px;
+      background: #fff;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      border-radius: 14px;
+    }
+  }
+}
