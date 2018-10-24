@@ -9,7 +9,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
-  <% if signed_in? %>
+  <!--<% if signed_in? %>
     Signed in as: <%= current_user.email %>
     <%= button_to 'Sign out', sign_out_path, method: :delete %>
   <% else %>
@@ -20,7 +20,7 @@
     <% flash.each do |key, value| %>
       <div class="flash <%= key %>"><%= value %></div>
     <% end %>
-  </div>
+  </div> -->
   <%= yield %>
 </body>
 </html>

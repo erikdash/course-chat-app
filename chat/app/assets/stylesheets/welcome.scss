@@ -5,8 +5,9 @@
 .welcome-wrapper {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
-  background: rgb(255,204,92);
-  background: linear-gradient(180deg, rgba(255,204,92,1) 0%, rgba(255,111,105,1) 100%); 
+  background: #ffcb60;
+  box-sizing: border-box;
+  border: 30px solid #333;
 
   .container {
     display: grid;
@@ -16,7 +17,7 @@
 
     position: absolute;
     height: 450px;
-    width: 60%;
+    width: 750px;
     top: 50%;
     left: 50%;
     margin-right: -50%;
@@ -34,7 +35,7 @@
 
     position: absolute;
     height: 450px;
-    width: 35%;
+    width: 400px;
     top: 50%;
     left: 50%;
     margin-right: -50%;
@@ -52,6 +53,13 @@
 
 .logo {
   grid-area: logo;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 350px;
+  }
 }
 
 /* ========================================================
