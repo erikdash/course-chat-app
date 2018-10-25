@@ -8,12 +8,18 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
-  get '/sign_in' => "welcome#login", as: "sign_in"
-  delete '/sign_out' => "welcome#destroy", as: "sign_out"
-  get '/sign_up' => "welcome#signup", as: "sign_up"
-  get 'home/index'
+  # Session routes
+  get '/sign_in' => 'sessions#new', as: 'sign_in'
+  delete '/sign_out' => 'sessions#destroy', as: 'sign_out'
+
+  if Clearance.configuration.allow_sign_up?
+    get '/sign_up' => 'users#new', as: 'sign_up'
+  end
+
+  # Home routes
+  get '/index' => 'home#index', as: 'all_chatrooms'
   get 'home/chatroom'
   
-  root 'welcome#login'
+  root 'sessions#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

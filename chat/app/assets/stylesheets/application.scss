@@ -1,13 +1,27 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
 /* ========================================================
-   View Wrapper and Contianer
+   Authentication Wrapper and Contianer
    ======================================================== */
 
-.welcome-wrapper {
+  .authentication-wrapper {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
-  background: #ffcb60;
-  box-sizing: border-box;
-  border: 30px solid #333;
+  background: #fbc33c;
 
   .container {
     display: grid;
@@ -48,8 +62,8 @@
 
 
 /* ========================================================
-   Side Logo
-   ======================================================== */
+    Side Logo
+    ======================================================== */
 
 .logo {
   grid-area: logo;
@@ -63,10 +77,10 @@
 }
 
 /* ========================================================
-   Sign in Form
-   ======================================================== */
+    Authentication Form Wrapper
+    ======================================================== */
 
-.welcome-form-wrapper {
+.authentication-form-wrapper {
   grid-area: form;
   text-align: center;
 
@@ -86,6 +100,11 @@
     line-height: 1.5;
     border: 1px solid #e6e6e6;
     border-radius: 25px;
+    transition: .25s ease-out;
+
+    &:focus {
+      box-shadow: 0 0 5px #007bff;
+    }
   }
 
   .submit-button {
@@ -93,10 +112,10 @@
     padding: 12px 10px;
     margin-top: 10px;
     color: #fff;
-    background: #ff6f69 ;
+    background: #007bff;
     font-size: 18px;
     font-weight: bold;
-    border: 1px solid #ff6f69 ;
+    border: 1px solid #007bff;
     border-radius: 25px;
     transition: .4s ease;
 
@@ -110,7 +129,7 @@
   .forgot, .create-account, .other-links {
     text-align: center;
     margin-top: 15px;
-    color: #888;
+    color: #777;
     font-size: 12px;
 
     a {
@@ -119,7 +138,7 @@
       transition: .2s ease;
 
       &:hover {
-        color: #ff6f69 ; 
+        color: #007bff ; 
       }
     }
   }
@@ -130,6 +149,5 @@
 
   .other-links {
     font-size: 18px;
-  }
-  
+  } 
 }
