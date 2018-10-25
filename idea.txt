@@ -1,5 +1,0 @@
-1.	Name
-2.	What: Chat application for all classes at Pitt. Can join, message each other, share files/links/etc.
-    Why: Allow collaboration between students in class, to share info, notes, study guides, etc.
-    How: Web application
-3.	MVC pattern, Java/JUnit or C#/.NET/NUnit.
