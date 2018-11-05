@@ -8,6 +8,10 @@ class DocumentController < ApplicationController
   end
 
   def delete
-    Messages.delete(Messages.find_by(id: params.require(:id)))
+    Document.delete(Document.find_by(id: params.require(:id)))
+  end
+
+  def all
+    Document.find_by(chatroom: params[:chatroom]).order(:date_uploaded)
   end
 end
