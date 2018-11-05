@@ -1,11 +1,11 @@
 class CreateChatrooms < ActiveRecord::Migration[5.2]
   def change
     create_table :chatrooms do |t|
-      t.integer :chatroom_id
+      t.integer :id
       t.string :chat_room_name
       t.datetime :date_created
-      # t.binary :files_uploaded
       t.integer :number_of_stars
+
 
       t.timestamps
     end

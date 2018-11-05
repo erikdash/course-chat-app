@@ -3,7 +3,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       t.timestamps null: false
       t.string :email, null: false
+      t.string :nickname
       t.string :encrypted_password, limit: 128, null: false
+      t.boolean :permissions # true = admin, false = not admin
       t.string :confirmation_token, limit: 128
       t.string :remember_token, limit: 128, null: false
     end
