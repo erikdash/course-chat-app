@@ -6,6 +6,7 @@ class CreateDocuments < ActiveRecord::Migration[5.2]
       t.datetime :date_uploaded
       t.string :uploaded_by
       t.integer :size # in bytes
+      # TODO we have metadata but what about actual file?
 
       t.timestamps
     end
