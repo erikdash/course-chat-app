@@ -14,4 +14,8 @@ class DocumentController < ApplicationController
   def all
     Document.find_by(chatroom: params[:chatroom]).order(:date_uploaded)
   end
+
+  def user_params # ?
+    params[Clearance.configuration.user_parameter] || Hash.new
+  end
 end
