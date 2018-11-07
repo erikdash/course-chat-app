@@ -1,7 +1,7 @@
 require 'date'
 class DocumentController < ApplicationController
   def new
-    @document = Document.new(params.require(:document_name, :chatroom))
+    @document = Document.create(document_name: params.require(:document_name), chatroom: params.require(:chatroom))
     @document.user = user_params # ? session[:current_user_id]
     @document.date_uploaded = DateTime.now
     @document.id = Documents.count - 1

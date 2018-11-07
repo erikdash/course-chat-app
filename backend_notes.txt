@@ -1,0 +1,1 @@
+I think accessing "flashed" messages should be done in view (see new method in messages_controller.rb)

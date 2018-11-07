@@ -11,5 +11,25 @@
   <% end %>
 </div>
 
+<!-- <div class="authentication-form-wrapper">
+  <h2>Set Nickname</h2>
+
+  <%= form_for @user do |form| %>
+    <%= form.text_field :nickname, type: 'text', placeholder: "Nickname", class: 'input-field'%>
+
+    <%= form.submit 'Submit', :class => 'submit-button' %>
+
+    <div id="flash">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+
+    <div class="other-links">
+      <%= link_to t(".return"), sign_in_path %>
+    </div>
+  <% end %>
+</div> -->
+
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
