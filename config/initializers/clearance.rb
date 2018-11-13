@@ -13,7 +13,6 @@ def user_confirmed?
 end
 
 Clearance.configure do |config|
-  config.routes = false
   config.mailer_sender = "confirmation@chatapp.com"
   config.sign_in_guards = [ConfirmedUserGuard]
   config.allow_sign_up = true
@@ -27,6 +26,5 @@ Clearance.configure do |config|
   config.redirect_url = "/"
   config.rotate_csrf_on_sign_in = false
   config.secure_cookie = false
-  config.sign_in_guards = []
   config.user_model = User
 end
