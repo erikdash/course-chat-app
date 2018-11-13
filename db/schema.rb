@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_08_012412) do
+ActiveRecord::Schema.define(version: 2018_11_10_185242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "chatrooms", force: :cascade do |t|
-    t.integer "chatroom_id"
     t.string "chat_room_name"
     t.datetime "date_created"
     t.integer "number_of_stars"
@@ -25,7 +24,6 @@ ActiveRecord::Schema.define(version: 2018_11_08_012412) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.integer "document_id"
     t.string "document_name"
     t.datetime "date_uploaded"
     t.string "uploaded_by"
@@ -35,9 +33,8 @@ ActiveRecord::Schema.define(version: 2018_11_08_012412) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "message_id"
     t.datetime "date_sent"
-    t.string "conents"
+    t.string "contents"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,7 +49,9 @@ ActiveRecord::Schema.define(version: 2018_11_08_012412) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", null: false
+    t.string "nickname"
     t.string "encrypted_password", limit: 128, null: false
+    t.boolean "permissions"
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128, null: false
     t.string "email_confirmation_token", default: "", null: false

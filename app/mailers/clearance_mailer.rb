@@ -17,7 +17,7 @@ class ClearanceMailer < ActionMailer::Base
       from: Clearance.configuration.mailer_sender,
       to: @user.email,
       subject: I18n.t(
-        :change_password,
+        :confirm_email,
         scope: [:clearance, :models, :clearance_mailer]
       ),
     )

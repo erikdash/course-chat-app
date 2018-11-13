@@ -93,7 +93,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Default mailer url (heroku app url)
-  config.action_mailer.default_url_options = { host: 'https://peaceful-brook-54111.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'https://mighty-coast-82167.herokuapp.com' }
 
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
