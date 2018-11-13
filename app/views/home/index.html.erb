@@ -1,16 +1,4 @@
-<% if signed_in? %>
-  Signed in as: <%= current_user.email %>
-  <%= button_to 'Sign out', sign_out_path, method: :delete %>
-<% else %>
-  <%= link_to 'Sign in', sign_in_path %>
-<% end %>
-
-<div id="flash">
-  <% flash.each do |key, value| %>
-    <div class="flash <%= key %>"><%= value %></div>
-  <% end %>
-</div>
-
+<% if false %>
 <!-- <div class="authentication-form-wrapper">
   <h2>Set Nickname</h2>
 
@@ -30,6 +18,7 @@
     </div>
   <% end %>
 </div> -->
+<% end %>
 
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
