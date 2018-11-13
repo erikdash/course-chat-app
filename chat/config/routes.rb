@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
-  resources :users, controller: "clearance/users", only: [:create] do
+  resources :users, only: :create do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
@@ -19,7 +19,11 @@ Rails.application.routes.draw do
   # Home routes
   get '/index' => 'home#index', as: 'all_chatrooms'
   get 'home/chatroom'
-  
+
+  # Email confirmation
+  get "/confirm_email/:token" => "email_confirmations#update", as: "confirm_email"
+
+  # Root
   root 'sessions#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

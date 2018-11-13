@@ -8,8 +8,20 @@ class UsersController < Clearance::UsersController
   def new
     @user = user_from_params
     render template: "users/new"
-    @user.nickname = params.require(:nickname)
-    @user.permissions = params.require(:permissions)
+    # @user.nickname = params.require(:nickname)
+    # @user.permissions = params.require(:permissions)
+  end
+
+  def create
+    @user = user_from_params
+    @user.email_confirmation_token = Clearance::Token.new
+
+    if @user.save
+      ClearanceMailer.registration_confirmation(@user).deliver_later
+      redirect_back_or url_after_create
+    else
+      render template: "users/new"
+    end
   end
 
   def get_nickname
