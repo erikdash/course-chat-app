@@ -31,19 +31,24 @@ class UsersController < Clearance::UsersController
   # Sets the user's nickname to be whatever they pass in
   # Throws an error if it could not save
   def set_nickname
-    @user.nickname = params.require(:nickname)
-    unless @user.save
-      flash.now[:error] = "Could not update nickname"
+    if request.post?
+      @user.update = params.require(:nickname)
+      unless @user.save
+        flash.now[:error] = "Could not update nickname"
+      end
+      redirect_to "/index"
+    else # get
+      render template: "users/set_nickname"
     end
   end
 
-  def get_starred_chatrooms 
+  def get_starred_chatrooms
     return @user.chatrooms
   end
 
   # Sets the user's chatrooms to be whatever they pass in
   # Throws an error if it could not save
-  def set_starred_chatrooms 
+  def set_starred_chatrooms
     @user.chatrooms << params.require(:chatrooms)
     unless @user.save
       flash.now[:error] = "Could not set chatrooms"
