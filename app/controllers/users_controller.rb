@@ -74,11 +74,9 @@ class UsersController < Clearance::UsersController
     #@user_model.send_message(message)
   end
 
-  def send_direct_message direct_message
-    #@user_model.send_direct_message(direct_message)
+  def send_direct_message 
+   
   end
-
-  
 
   private
     def send_message_params

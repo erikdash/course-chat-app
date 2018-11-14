@@ -6,7 +6,7 @@ class ChatroomsController < ApplicationController
 
   # returns all messages in specific chatroom
   def show
-    @room = Chatroom.find_by(id: params.require(:id))
+    @room = Chatroom.find_by(chat_room_name: params.require(:chat_room_name))
     @room_messages = @room.messages.all
   end
 end
