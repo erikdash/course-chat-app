@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include Clearance::User
   has_many :messages
-  has_many :chatrooms # starred chatrooms
+  #has_many :chatrooms # starred chatrooms
   has_many :notifications
 
   def confirm_email
@@ -28,13 +28,5 @@ class User < ApplicationRecord
   def remove_starred_chatroom chatroom_name
 
 
-  end
-
-  def send_message(chatroom)
-    message = Message.create
-    chatroom = Chatroom.find_by(id: 2)#session[:current_room]
-    chatroom.messages << message
-    render template: "chatrooms/show"
-    #@user_model.send_message(message)
   end
 end

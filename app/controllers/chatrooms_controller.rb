@@ -24,11 +24,11 @@ class ChatroomsController < ApplicationController
 
   # returns all messages in specific chatroom
   def show
-    @chatroom = Chatroom.find_by(chat_room_name: params.require(:chat_room_name))
+    @chatroom = Chatroom.find_by(chat_room_name: params.require(:chatroom))
     @room_messages = @chatroom.messages.all
     session[:current_room] = @chatroom
-    chat_room_path(chat_room_name: @chatroom.chat_room_name)
-    render @chatroom.chat_room_name
+    #chat_room_path_url(chatroom: @chatroom.chat_room_name)
+    render "chatrooms/show"#@chatroom.chat_room_name
   end
 
   # checks to see if any new messages have been sent since last check

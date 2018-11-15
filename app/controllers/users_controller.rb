@@ -71,8 +71,10 @@ class UsersController < Clearance::UsersController
   end
 
   def send_message
+    message = Message.create
     chatroom = session[:current_room]
-    @user.send_message chatroom
+    chatroom.messages << message
+    render template: "chatrooms/show"
   end
 
   def send_direct_message
