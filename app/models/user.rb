@@ -30,4 +30,11 @@ class User < ApplicationRecord
 
   end
 
+  def send_message(chatroom)
+    message = Message.create
+    chatroom = Chatroom.find_by(id: 2)#session[:current_room]
+    chatroom.messages << message
+    render template: "chatrooms/show"
+    #@user_model.send_message(message)
+  end
 end

@@ -1,10 +1,10 @@
 require 'date'
 class MessageController < ApplicationController
-  def new
-    @message = Message.create(contents: params.require(:contents), chatroom: params.require(:chatroom))
+  def create
+    @message = Message.create(contents: params.require(:contents))#, chatroom: params.require(:chatroom))
     @message.user = user_params # ? session[:current_user_id]
     @message.date_sent = DateTime.now
-    @message.id = Messages.count - 1 # ex: after creating first message, count = 1, so id = 0
+    #@message.id = Messages.count - 1 # ex: after creating first message, count = 1, so id = 0
     unless @message.save
       flash.now[:error] = "Could not create message"
     end

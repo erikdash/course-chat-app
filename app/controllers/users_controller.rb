@@ -63,19 +63,20 @@ class UsersController < Clearance::UsersController
 
   # Sets the user's permissions to be whatever they pass in
   # Throws an error if it could not save
-  def set_user_permissions 
+  def set_user_permissions
     @user.permissions = params.require(:permissions)
     unless @user.save
       flash.now[:error] = "Could not update permissions"
     end
   end
 
-  def send_message 
-    #@user_model.send_message(message)
+  def send_message
+    chatroom = session[:current_room]
+    @user.send_message chatroom
   end
 
-  def send_direct_message 
-   
+  def send_direct_message
+
   end
 
   private

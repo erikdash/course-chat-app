@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get '/index' => 'home#index', as: 'all_chatrooms'
   get 'home/chatroom'
 
+  get '/chatrooms/:chat_room_name', to: 'chatrooms#show', as: :chat_room_path
+
   # Email confirmation
   get "/confirm_email/:token" => "email_confirmations#update", as: "confirm_email"
 

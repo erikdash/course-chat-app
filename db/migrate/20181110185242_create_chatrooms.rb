@@ -4,6 +4,7 @@ class CreateChatrooms < ActiveRecord::Migration[5.2]
       t.string :chat_room_name
       t.datetime :date_created
       t.integer :number_of_stars
+      t.integer :user_ids
 
       t.timestamps
     end
