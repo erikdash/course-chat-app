@@ -8,7 +8,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :permissions # true = admin, false = not admin
       t.string :confirmation_token, limit: 128
       t.string :remember_token, limit: 128, null: false
-      #t.integer :chatroom_ids
     end
 
     add_index :users, :email

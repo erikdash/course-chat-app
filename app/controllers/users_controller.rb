@@ -7,6 +7,8 @@ class UsersController < Clearance::UsersController
 
   def new
     @user = user_from_params
+    puts "USER #{@user}"
+    session[:user] = @user
     render template: "users/new"
     # @user.nickname = params.require(:nickname)
     # @user.permissions = params.require(:permissions)
@@ -15,13 +17,13 @@ class UsersController < Clearance::UsersController
   def create
     @user = user_from_params
     @user.email_confirmation_token = Clearance::Token.new
-
     if @user.save
       ClearanceMailer.registration_confirmation(@user).deliver_later
       redirect_back_or url_after_create
     else
       render template: "users/new"
     end
+    session[:user] = @user
   end
 
   def get_nickname
@@ -71,20 +73,16 @@ class UsersController < Clearance::UsersController
   end
 
   def send_message
-    message = Message.create
-    chatroom = session[:current_room]
-    chatroom.messages << message
-    render template: "chatrooms/show"
+    message_controller = MessagesController.new
+    message_controller.request = request
+    message_controller.response = response
+    message_controller.create
+    redirect_to chat_room_path_url # TODO make this asynchronous
   end
 
   def send_direct_message
 
   end
-
-  private
-    def send_message_params
-      params.require(:message)
-    end
 
   def user_from_params
     email = user_params.delete(:email)

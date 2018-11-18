@@ -24,7 +24,7 @@ class ChatroomsController < ApplicationController
 
   # returns all messages in specific chatroom
   def show
-    @chatroom = Chatroom.find_by(chat_room_name: params.require(:chatroom))
+    @chatroom = Chatroom.find_by(chat_room_name: "CS1530")
     @room_messages = @chatroom.messages.all
     session[:current_room] = @chatroom
     #chat_room_path_url(chatroom: @chatroom.chat_room_name)

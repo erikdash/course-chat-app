@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'home/chatroom'
 
   get '/chatrooms/:chatroom', to: 'chatrooms#show', as: :chat_room_path
+  post '/chatrooms/:chatroom', to: 'users#send_message', as: :chat_room_send_path
 
   # Email confirmation
   get "/confirm_email/:token" => "email_confirmations#update", as: "confirm_email"

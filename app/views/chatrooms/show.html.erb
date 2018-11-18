@@ -1,7 +1,13 @@
 <h2><%= @chatroom.chat_room_name %></h2>
 
-<ul id = "messages">
+<div id = "messages">
    <% @room_messages.each do |c| %>
-      <li><%= c.contents %></li>
+      <%= c.user.nickname %> says: <%= c.contents %>
    <% end %>
-</ul>
+</div>
+
+<%= form_for :session, url: "/chatrooms/CS1530" do |form| %>
+  <%= form.text_field :contents, type: 'contents', placeholder: "Message", class: 'input-field'%>
+
+  <%= form.submit 'Send', :class => 'submit-button' %>
+<% end %>

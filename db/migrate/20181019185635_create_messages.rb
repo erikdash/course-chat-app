@@ -4,6 +4,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.datetime :date_sent
       t.string :contents
       t.integer :chatroom_id
+      t.integer :user_id
 
       t.timestamps
     end
