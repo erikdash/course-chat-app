@@ -1,0 +1,40 @@
+<div class="home-wrapper">
+  <div class="container">
+    <div class="side">
+      <ul>
+        <li>
+          <label>
+            <input type="radio" id="home" name="panel" value="0">Home
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="radio" id="home" name="panel" value="0">Starred
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="radio" id="home" name="panel" value="0">Profile
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="radio" id="home" name="panel" value="0">Current Room
+          </label>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main">
+      <div class="home-header">
+          <h1>Hi, <%= current_user.nickname %></h1>
+      </div>
+
+      <% @all_rooms.each do |room| %>
+        <%= room.chat_room_name %>
+      <% end %>
+    </div>
+
+
+  </div>
+</div>

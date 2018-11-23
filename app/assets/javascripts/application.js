@@ -14,3 +14,10 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function () {
+  $('input').click(function () {
+      $('input:not(:checked)').parent().removeClass("selected");
+      $('input:checked').parent().addClass("selected");
+  });
+});

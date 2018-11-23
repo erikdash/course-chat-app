@@ -25,6 +25,6 @@ Clearance.configure do |config|
   config.redirect_url = "/"
   config.rotate_csrf_on_sign_in = false
   config.secure_cookie = false
-  config.sign_in_guards = [ConfirmedUserGuard]
+  # config.sign_in_guards = [ConfirmedUserGuard]
   config.user_model = User
 end
