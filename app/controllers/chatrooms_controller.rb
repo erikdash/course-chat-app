@@ -18,17 +18,21 @@ class ChatroomsController < ApplicationController
   end
 
   # returns all chatrooms
-  def index
-    @all_rooms = Chatroom.all
-  end
+  # def index
+  #   # @all_rooms = Chatroom.all
+  #   @messages = Message.order(created_at: :asc)
+  # end
 
   # returns all messages in specific chatroom
   def show
+    @messages = Message.order(created_at: :asc)
     @chatroom = Chatroom.find_by(chat_room_name: "CS1530")
-    @room_messages = @chatroom.messages.all
+    # @room_messages = @chatroom.messages.all
     session[:current_room] = @chatroom
+
+    # KEEP COMMENTED
     #chat_room_path_url(chatroom: @chatroom.chat_room_name)
-    render "chatrooms/show"#@chatroom.chat_room_name
+    # render "chatrooms/show"#@chatroom.chat_room_name
   end
 
   # checks to see if any new messages have been sent since last check

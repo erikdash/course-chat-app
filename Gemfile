@@ -72,3 +72,6 @@ gem "email_spec"
 
 # Hide environment variables
 gem "figaro"
+
+# jQuery
+gem 'jquery-rails'

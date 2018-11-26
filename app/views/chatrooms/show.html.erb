@@ -1,13 +1,14 @@
-<h2><%= @chatroom.chat_room_name %></h2>
+<h2 id = "header"><%= @chatroom.chat_room_name %></h2>
+
+
 
 <div id = "messages">
-   <% @room_messages.each do |c| %>
-      <%= c.user.nickname %> says: <%= c.contents %>
-   <% end %>
+  <%= render @chatroom.messages %>
 </div>
 
-<%= form_for :session, url: "/chatrooms/CS1530" do |form| %>
-  <%= form.text_field :contents, type: 'contents', placeholder: "Message", class: 'input-field'%>
+<!-- might need to be form_with -->
+<%= form_with url: "/chatrooms/CS1530", html: {id: 'new-message'} do |form| %>
+  <%= form.text_area :contents, type: 'contents', placeholder: "Message", class: 'input-field', id: 'contents' %>
 
   <%= form.submit 'Send', :class => 'submit-button' %>
 <% end %>
