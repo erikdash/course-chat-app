@@ -47,4 +47,8 @@ Rails.application.configure do
   # Configure the mailer to create full URLs in emails:
   # In production it should be your app's domain name.
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+  # ActionCable config
+  config.action_cable.url = 'ws://localhost:3000/cable'
+  config.action_cable.allowed_request_origins = [ 'http://localhost:3000', 'http://127.0.0.1:3000' ]
 end

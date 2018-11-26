@@ -61,4 +61,8 @@ Rails.application.configure do
 
   # Action mailer
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # ActionCable config
+  config.action_cable.url = 'ws://localhost:3000/cable'
+  config.action_cable.allowed_request_origins = [ 'http://localhost:3000', 'http://127.0.0.1:3000' ]
 end

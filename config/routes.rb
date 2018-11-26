@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # ActionCable
+  mount ActionCable.server => '/cable'
+  resources :chatrooms, only: [:new, :create, :show]
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -18,10 +22,10 @@ Rails.application.routes.draw do
 
   # Home routes
   get '/index' => 'home#index', as: 'all_chatrooms'
-  get 'home/chatroom'
+  # get 'home/chatroom'
 
   get '/chatrooms/:chatroom', to: 'chatrooms#show', as: :chat_room_path
-  post '/chatrooms/:chatroom', to: 'users#send_message', as: :chat_room_send_path
+  post '/chatrooms/:chatroom', to: 'chatrooms#show', as: :chat_room_send_path
 
   # Email confirmation
   get "/confirm_email/:token" => "email_confirmations#update", as: "confirm_email"

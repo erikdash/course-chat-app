@@ -72,13 +72,13 @@ class UsersController < Clearance::UsersController
     end
   end
 
-  def send_message
-    message_controller = MessagesController.new
-    message_controller.request = request
-    message_controller.response = response
-    message_controller.create
-    redirect_to chat_room_path_url # TODO make this asynchronous
-  end
+  # def send_message
+  #   message_controller = MessagesController.new
+  #   message_controller.request = request
+  #   message_controller.response = response
+  #   message_controller.create
+  #   redirect_to chat_room_path_url # TODO make this asynchronous
+  # end
 
   def send_direct_message
 
