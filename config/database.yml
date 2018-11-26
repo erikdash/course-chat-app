@@ -24,3 +24,6 @@ production:
 
 cucumber:
   <<: *TEST
+
+default: &default
+  host: localhost

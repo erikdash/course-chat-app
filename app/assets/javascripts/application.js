@@ -16,3 +16,10 @@
 //= require_tree .
 //= require rails-ujs
 //= require activestorage
+
+$(document).ready(function () {
+  $('input').click(function () {
+      $('input:not(:checked)').parent().removeClass("selected");
+      $('input:checked').parent().addClass("selected");
+  });
+});

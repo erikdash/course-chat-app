@@ -20,10 +20,8 @@ Rails.application.routes.draw do
     get '/sign_up' => 'users#new', as: 'sign_up'
   end
 
-  # Home routes
-  get '/index' => 'home#index', as: 'all_chatrooms'
-  # get 'home/chatroom'
-
+  # Chatroom routes
+  get '/index' => 'chatrooms#index', as: 'home'
   get '/chatrooms/:chatroom', to: 'chatrooms#show', as: :chat_room_path
   post '/chatrooms/:chatroom', to: 'chatrooms#show', as: :chat_room_send_path
 
