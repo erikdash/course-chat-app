@@ -18,10 +18,10 @@ class ChatroomsController < ApplicationController
   end
 
   # returns all chatrooms
-  # def index
-  #   # @all_rooms = Chatroom.all
-  #   @messages = Message.order(created_at: :asc)
-  # end
+  def index
+    @all_rooms = Chatroom.all
+    # @messages = Message.order(created_at: :asc)
+  end
 
   # returns all messages in specific chatroom
   def show

@@ -8,6 +8,10 @@ jQuery(document).on 'turbolinks:load', ->
   $new_message_body = $new_message_form.find('#contents')
 
   if $messages.length > 0
+
+    messages_to_bottom = -> $messages.scrollTop($messages.prop("scrollHeight"))
+    messages_to_bottom()
+
     App.chat = App.cable.subscriptions.create {
       channel: "ChatChannel"
       },
@@ -19,6 +23,7 @@ jQuery(document).on 'turbolinks:load', ->
         if data['message']
           $new_message_body.val('')
           $messages.append data['message']
+          messages_to_bottom()
 
       send_message: (message, current_room) ->
         @perform 'send_message', message: message, current_room: current_room
