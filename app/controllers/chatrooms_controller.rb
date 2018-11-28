@@ -18,15 +18,18 @@ class ChatroomsController < ApplicationController
   end
 
   # returns all chatrooms
-  # def index
-  #   # @all_rooms = Chatroom.all
-  #   @messages = Message.order(created_at: :asc)
-  # end
+  def index
+    # @all_rooms = Chatroom.all
+    @messages = Message.order(created_at: :asc)
+  end
 
   # returns all messages in specific chatroom
   def show
     @messages = Message.order(created_at: :asc)
-    @chatroom = Chatroom.find_by(chat_room_name: "CS1530")
+    @current_uri = request.path
+    chatroom = @current_uri.delete "/chatrooms/"
+    puts "CURRENT URI: #{@current_uri}"
+    @chatroom = Chatroom.find_by(chat_room_name: chatroom)
     # @room_messages = @chatroom.messages.all
     session[:current_room] = @chatroom
 
