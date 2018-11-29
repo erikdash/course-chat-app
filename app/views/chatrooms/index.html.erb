@@ -1,5 +1,7 @@
 <div class="home-wrapper">
   <div class="container">
+    
+    <!-- Left Radio -->
     <div class="side">
       <ul>
         <li>
@@ -23,15 +25,30 @@
           </label>
         </li>
       </ul>
+      <hr>
+      <%= button_to 'Sign out', sign_out_path, method: :delete, form_class: 'submit-button' %>
+      <button id="add-room">Add Room</button>
     </div>
 
+    <!-- Modals -->
+    <div id="add-room-modal" class="modal">
+      <div class="modal-content">
+        <span id="close-modal">&times;</span>
+        <p>Some text in the Modal..</p>
+      </div>
+    </div>
+
+    <!-- Home Panel -->
     <div class="main">
       <div class="home-header">
-          <h1>Hi, <%= current_user.nickname %></h1>
+        <h1>Hi, <%= current_user.nickname %></h1>
+        <%= link_to t(".create room"), 'chatrooms/new' %>
       </div>
 
-      <% @all_rooms.each do |room| %>
+      <% @rooms.each do |room| %>
+        <p>A room</p>
         <%= room.chat_room_name %>
+        <%= link_to 'Show', chat_room_path_url(room) %>
       <% end %>
     </div>
 
