@@ -14,6 +14,11 @@ class UsersController < Clearance::UsersController
     # @user.permissions = params.require(:permissions)
   end
 
+  def edit
+    @chatroom = Chatroom.new
+    @user = current_user
+  end
+
   def create
     @user = user_from_params
     @user.email_confirmation_token = Clearance::Token.new
@@ -24,6 +29,13 @@ class UsersController < Clearance::UsersController
       render template: "users/new"
     end
     session[:user] = @user
+  end
+
+  def update
+    @user = current_user
+    @user.update(user_params_edit)
+    puts @user.errors.messages
+    redirect_to profile_path
   end
 
   def get_nickname
@@ -95,5 +107,10 @@ class UsersController < Clearance::UsersController
       user.password = password
       user.permissions = false
     end
+  end
+
+  private
+  def user_params_edit
+    params.require(:user).permit(:nickname, :password).reject { |k, v| v.blank? }
   end
 end

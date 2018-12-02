@@ -11,7 +11,7 @@
           <%= button_to 'Starred', home_path, method: :get, class: 'side-button' %>
         </li>
         <li>
-          <%= button_to 'Profile', home_path, method: :get, class: 'side-button' %>
+          <%= button_to 'Profile', profile_path, method: :get, class: 'side-button' %>
         </li>
         <li>
           <%= button_to 'Current Room', session[:current_room], method: :get, class: 'side-button' %>
@@ -33,7 +33,7 @@
 
     <!-- Home Panel -->
     <div class="main">
-      <div class="home-header">
+      <div class="main-header">
         <h1>Hi, <%= current_user.nickname %></h1>
       </div>
 
