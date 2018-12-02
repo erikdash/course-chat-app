@@ -20,7 +20,7 @@
 /**
  * Display the modal on button click.
  */
-var addRoom = document.getElementById("add-room");
+var addRoom = document.getElementById('add-room');
 var addRoomModal = document.getElementById('add-room-modal');
 var closeRoomModal = document.getElementsByClassName("close")[0];
 

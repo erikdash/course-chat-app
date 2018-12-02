@@ -23,6 +23,9 @@ class ChatroomsController < ApplicationController
     # @messages = Message.order(created_at: :asc)
   end
 
+  
+
+
   # returns all messages in specific chatroom
   def show
     @messages = Message.order(created_at: :asc)

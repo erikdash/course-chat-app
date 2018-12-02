@@ -5,29 +5,21 @@
     <div class="side">
       <ul>
         <li>
-          <label>
-            <input type="radio" id="home" name="panel" value="0">Home
-          </label>
+          <%= button_to 'Home', home_path, method: :get, class: 'side-button selected' %>
         </li>
         <li>
-          <label>
-            <input type="radio" id="home" name="panel" value="0">Starred
-          </label>
+          <%= button_to 'Starred', home_path, method: :get, class: 'side-button' %>
         </li>
         <li>
-          <label>
-            <input type="radio" id="home" name="panel" value="0">Profile
-          </label>
+          <%= button_to 'Profile', home_path, method: :get, class: 'side-button' %>
         </li>
         <li>
-          <label>
-            <input type="radio" id="home" name="panel" value="0">Current Room
-          </label>
+          <%= button_to 'Current Room', home_path, method: :get, class: 'side-button' %>
         </li>
       </ul>
       <hr>
-      <%= button_to 'Sign out', sign_out_path, method: :delete, form_class: 'submit-button' %>
-      <button id="add-room">Add Room</button>
+      <button id="add-room" class="submit-button">Add room</button>
+      <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'submit-button' %>
     </div>
 
     <!-- Modals -->
@@ -46,12 +38,13 @@
       </div>
 
       <% @rooms.each do |room| %>
-        <p>A room</p>
-        <%= room.chat_room_name %>
-        <%= link_to 'Show', chat_room_path_url(room) %>
+        <div class="room-card">
+          <%= room.chat_room_name %>
+          <p>📅: <%= room.date_created %></p>
+          <p>⭐: <%= room.number_of_stars %></p>
+          <%= link_to 'Show', chat_room_path_url(room) %>
+        </div>
       <% end %>
-    </div>
-
-
+    </div> 
   </div>
 </div>
