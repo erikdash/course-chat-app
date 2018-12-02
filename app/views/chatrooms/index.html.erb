@@ -14,7 +14,7 @@
           <%= button_to 'Profile', home_path, method: :get, class: 'side-button' %>
         </li>
         <li>
-          <%= button_to 'Current Room', home_path, method: :get, class: 'side-button' %>
+          <%= button_to 'Current Room', session[:current_room], method: :get, class: 'side-button' %>
         </li>
       </ul>
       <hr>
@@ -26,7 +26,8 @@
     <div id="add-room-modal" class="modal">
       <div class="modal-content">
         <span id="close-modal">&times;</span>
-        <p>Some text in the Modal..</p>
+        <h2>New Chat Room</h2>
+        <%= render partial: "new" %>
       </div>
     </div>
 
@@ -34,17 +35,18 @@
     <div class="main">
       <div class="home-header">
         <h1>Hi, <%= current_user.nickname %></h1>
-        <%= link_to t(".create room"), 'chatrooms/new' %>
       </div>
 
-      <% @rooms.each do |room| %>
-        <div class="room-card">
-          <%= room.chat_room_name %>
-          <p>📅: <%= room.date_created %></p>
-          <p>⭐: <%= room.number_of_stars %></p>
-          <%= link_to 'Show', chat_room_path_url(room) %>
-        </div>
-      <% end %>
+      <div class="rooms">
+        <% @rooms.each do |room| %>
+          <div class="room-card">
+            <h4><%= room.chat_room_name %></h4>
+            <p>📅: <%= room.date_created %></p>
+            <p>⭐: <%= room.number_of_stars %></p>
+            <%= link_to content_tag(:span, ""), chat_room_path_url(room) %>
+          </div>
+        <% end %>
+      </div>
     </div> 
   </div>
 </div>

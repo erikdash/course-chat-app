@@ -1,10 +1,5 @@
 class ChatroomsController < ApplicationController
 
-  def new
-    @chatroom = Chatroom.new
-    render template: "chatrooms/new"
-  end
-
   # creates a chat_room
   def create
     @chatroom = Chatroom.new(chatroom_params)
@@ -19,12 +14,12 @@ class ChatroomsController < ApplicationController
 
   # returns all chatrooms
   def index
+    # For making a new chatroom in the modal
+    @chatroom = Chatroom.new
+    # Display all rooms
     @rooms = Chatroom.all
     # @messages = Message.order(created_at: :asc)
   end
-
-  
-
 
   # returns all messages in specific chatroom
   def show

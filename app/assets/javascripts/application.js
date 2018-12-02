@@ -17,36 +17,47 @@
 //= require rails-ujs
 //= require activestorage
 
-/**
- * Display the modal on button click.
- */
-var addRoom = document.getElementById('add-room');
-var addRoomModal = document.getElementById('add-room-modal');
-var closeRoomModal = document.getElementsByClassName("close")[0];
-
-addRoom.onclick = function() {
-  addRoomModal.style.display = "block";
-}
-
-closeRoomModal.onclick = function() {
-  addRoomModal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == addRoomModal) {
-      addRoomModal.style.display = "none";
-  }
-} 
-
-/**
- * Add and remove the selected class from the left radio buttons.
- */
 $(document).ready(function () {
+  /**
+   * Add and remove the selected class from the left radio buttons.
+   */
   $('input').click(function () {
       $('input:not(:checked)').parent().removeClass("selected");
       $('input:checked').parent().addClass("selected");
   });
+
+  /**
+   * Display the modal on button click.
+   */
+  var addRoom = document.getElementById('add-room');
+  var addRoomModal = document.getElementById('add-room-modal');
+  var closeRoomModal = document.getElementById('close-modal');
+
+  addRoom.onclick = function() {
+    addRoomModal.style.display = "block";
+  }
+
+  closeRoomModal.onclick = function() {
+    addRoomModal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == addRoomModal) {
+        addRoomModal.style.display = "none";
+    }
+  }
 });
+
+/**
+   * Chatroom enter key submits the message, or shift click to go to a new line.
+   */
+  $("#contents").keypress(function (e) {
+    if(e.which == 13 && !e.shiftKey) {        
+        $(this).closest("form").submit();
+        e.preventDefault();
+        return false;
+    }
+  });
 
 
