@@ -8,6 +8,17 @@ jQuery(document).on 'turbolinks:load', ->
   $new_message_body = $new_message_form.find('#contents')
   $chat_room_name = $('#chat_room_name').val()
 
+<% Chatroom.all.each do |chatroom| %>
+  App[<%= chatroom.id %>] = App.cable.subscriptions.create({channel: 'MessagesChannel', room: <%= chatroom.id %>}, {
+    received: (data) ->
+      $("[data-chatroom='" + this.chatroomId + "']").removeClass('hidden')
+      return $("[data-chatroom='" + this.chatroomId + "']").append(data['message']);
+
+    setChatroomId: (chatroomId)
+      this.chatroomId = chatroomId
+  });
+<% end %>
+
   if $messages.length > 0
 
     messages_to_bottom = -> $messages.scrollTop($messages.prop("scrollHeight"))
@@ -15,9 +26,6 @@ jQuery(document).on 'turbolinks:load', ->
 
     App[$chat_room_name] = App.cable.subscriptions.create {
       channel: "ChatChannel", room: $chat_room_name
-
-    #App.chat = App.cable.subscriptions.create {
-     # channel: "ChatChannel"
       },
     # App.chat = App.cable.subscriptions.create {
     #   channel: "ChatChannel"
@@ -26,11 +34,11 @@ jQuery(document).on 'turbolinks:load', ->
 
       disconnected: ->
 
-      received: (data) ->
-        if data['message']
-          $new_message_body.val('')
-          $messages.append data['message']
-          messages_to_bottom()
+      # received: (data) ->
+      #   if data['message']
+      #     $new_message_body.val('')
+      #     $messages.append data['message']
+      #     messages_to_bottom()
 
       send_message: (message, current_room) ->
         @perform 'send_message', message: message, current_room: current_room
@@ -38,7 +46,8 @@ jQuery(document).on 'turbolinks:load', ->
     $new_message_form.submit (e) ->
       $this = $(this)
       contents = $new_message_body.val()
-      App[$chat_room_name].send_message contents, $header.text()
+      App[chatroomId].setChatroomId(chatroomId)
+      App[chatroomId].send_message contents, $header.text()
 
       e.preventDefault()
       return false

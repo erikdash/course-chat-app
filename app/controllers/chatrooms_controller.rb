@@ -18,7 +18,6 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.new
     # Display all rooms
     @rooms = Chatroom.all
-    # @messages = Message.order(created_at: :asc)
   end
 
   # returns all messages in specific chatroom
