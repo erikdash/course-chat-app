@@ -1,8 +1,7 @@
-<%= hidden_field_tag "chat_room_name", @chatroom.chat_room_name, { :id => "chat_room_name" } %>
 
 <div class="chatroom-wrapper">
   <div class="chatroom-header">
-    <h1><%= @chatroom.chat_room_name %></h1>
+    <h1 id="header"><%= @chatroom.chat_room_name %></h1>
   </div>
 
   <div id="messages">

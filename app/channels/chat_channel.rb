@@ -1,7 +1,7 @@
 class ChatChannel < ApplicationCable::Channel
   def subscribed
-    # stream_from "chat_channel"
-    stream_from "room-#{params['room']}:messages"
+    stream_from "chat_channel"
+    # stream_from "room-#{params['room']}:messages"
   end
 
   def unsubscribed
@@ -12,6 +12,7 @@ class ChatChannel < ApplicationCable::Channel
     message = Message.create(contents: data['message'], user: current_user, chatroom: chatroom, date_sent: DateTime.now)
     chatroom.messages << message
     unless message.save!
+      puts "COULD NOT SAVE"
       flash.now[:error] = "Could not create message"
     end
   end
