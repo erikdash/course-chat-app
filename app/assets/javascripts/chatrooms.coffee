@@ -26,8 +26,8 @@ jQuery(document).on 'turbolinks:load', ->
       received: (data) ->
         console.log(data['current_room'])
         console.log($header)
-        console.log($header.innerHTML)
-        if data['message'] && data['current_room'] == $header.innerHTML
+        console.log($header.text())
+        if data['message'] && data['current_room'] == $header.text()
           $new_message_body.val('')
           $messages.append data['message']
           messages_to_bottom()
