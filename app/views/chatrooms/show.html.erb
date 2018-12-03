@@ -4,7 +4,9 @@
   </div>
 
   <div id="messages">
-		<!-- TODO need to add render @chatroom.messages back -->
+    <% if @chatroom.messages %>
+      <%= render @chatroom.messages %>
+    <% end %>
   </div>
 
   <!-- might need to be form_with -->

@@ -24,7 +24,9 @@ class ChatroomsController < ApplicationController
   # returns all messages in specific chatroom
   def show
     @messages = Message.order(created_at: :asc)
-    @chatroom = Chatroom.find_by(chat_room_name: "CS1530")
+    @current_uri = request.path
+    chatroom = @current_uri.delete "/chatrooms/"
+    @chatroom = Chatroom.find_by(id: chatroom)
     # @room_messages = @chatroom.messages.all
     session[:current_room] = @chatroom
 
