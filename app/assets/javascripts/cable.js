@@ -8,6 +8,6 @@
 (function() {
   this.App || (this.App = {});
 
-  App.cable = ActionCable.createConsumer("wss://mighty-coast-82167.herokuapp.com");
+  App.cable = ActionCable.createConsumer();
 
 }).call(this);
