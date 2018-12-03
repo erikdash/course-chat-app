@@ -107,6 +107,6 @@ Rails.application.configure do
   }
 
   # ActionCable config
-  config.action_cable.url = 'ws://mighty-coast-82167.herokuapp.com/cable'
-  config.action_cable.allowed_request_origins = [ 'https://mighty-coast-82167.herokuapp.coms' ]
+  config.action_cable.url = 'wss://mighty-coast-82167.herokuapp.com/cable'
+  config.action_cable.allowed_request_origins = [ 'https://mighty-coast-82167.herokuapp.com' ]
 end
