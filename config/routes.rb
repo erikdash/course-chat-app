@@ -20,10 +20,14 @@ Rails.application.routes.draw do
     get '/sign_up' => 'users#new', as: 'sign_up'
   end
 
+  # User routes
+  get '/profile' => 'users#edit', as: 'profile'
+  patch '/users' => 'users#update'
+
   # Chatroom routes
   get '/index' => 'chatrooms#index', as: 'home'
-  get '/chatrooms/:chatroom', to: 'chatrooms#show', as: :chat_room_path
-  post '/chatrooms/:chatroom', to: 'chatrooms#show', as: :chat_room_send_path
+  get '/chatrooms/:chatroom' =>'chatrooms#show', as: :chat_room_path
+  post '/chatrooms/:chatroom' =>'chatrooms#show', as: :chat_room_send_path
 
   # Email confirmation
   get "/confirm_email/:token" => "email_confirmations#update", as: "confirm_email"

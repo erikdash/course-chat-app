@@ -1,26 +1,23 @@
 class ChatroomsController < ApplicationController
 
-  def new
-    @chatroom = Chatroom.new
-    render template: "chatrooms/new"
-  end
-
   # creates a chat_room
   def create
-    @chatroom = Chatroom.new(chat_room_name: params.require(:name))
+    @chatroom = Chatroom.new(chatroom_params)
+    @chatroom.chat_room_name = params[:chatroom][:chat_room_name]
     @chatroom.date_created = DateTime.now
     @chatroom.number_of_stars = 0
     session[:current_room] = @chatroom
     if @chatroom.save
-      # render template: "chatrooms/new"
-      render @chatroom.chat_room_name
+      redirect_to home_url
     end
   end
 
   # returns all chatrooms
   def index
-    # @all_rooms = Chatroom.all
-    @messages = Message.order(created_at: :asc)
+    # For making a new chatroom in the modal
+    @chatroom = Chatroom.new
+    # Display all rooms
+    @rooms = Chatroom.all
   end
 
   # returns all messages in specific chatroom
@@ -28,8 +25,7 @@ class ChatroomsController < ApplicationController
     @messages = Message.order(created_at: :asc)
     @current_uri = request.path
     chatroom = @current_uri.delete "/chatrooms/"
-    puts "CURRENT URI: #{@current_uri}"
-    @chatroom = Chatroom.find_by(chat_room_name: chatroom)
+    @chatroom = Chatroom.find_by(id: chatroom)
     # @room_messages = @chatroom.messages.all
     session[:current_room] = @chatroom
 
@@ -42,4 +38,9 @@ class ChatroomsController < ApplicationController
   # def check_new_messages
   #
   # end
+
+  private
+  def chatroom_params
+    params.require(:chatroom).permit(:chat_room_name)
+  end
 end

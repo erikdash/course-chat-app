@@ -15,6 +15,9 @@ jQuery(document).on 'turbolinks:load', ->
 
     App[$chat_room_name] = App.cable.subscriptions.create {
       channel: "ChatChannel", room: $chat_room_name
+
+    #App.chat = App.cable.subscriptions.create {
+     # channel: "ChatChannel"
       },
     # App.chat = App.cable.subscriptions.create {
     #   channel: "ChatChannel"
@@ -27,6 +30,7 @@ jQuery(document).on 'turbolinks:load', ->
         if data['message']
           $new_message_body.val('')
           $messages.append data['message']
+          messages_to_bottom()
 
       send_message: (message, current_room) ->
         @perform 'send_message', message: message, current_room: current_room
