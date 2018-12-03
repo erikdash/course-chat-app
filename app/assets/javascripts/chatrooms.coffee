@@ -27,6 +27,7 @@ jQuery(document).on 'turbolinks:load', ->
         if data['message']
           $new_message_body.val('')
           $messages.append data['message']
+          messages_to_bottom()
 
       send_message: (message, current_room) ->
         @perform 'send_message', message: message, current_room: current_room
