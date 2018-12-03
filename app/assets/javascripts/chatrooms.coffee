@@ -13,21 +13,21 @@ jQuery(document).on 'turbolinks:load', ->
     messages_to_bottom = -> $messages.scrollTop($messages.prop("scrollHeight"))
     messages_to_bottom()
 
-    App[$chat_room_name] = App.cable.subscriptions.create {
+    App.chat = App.cable.subscriptions.create {
       channel: "ChatChannel", room: $chat_room_name
 
-    #App.chat = App.cable.subscriptions.create {
-     # channel: "ChatChannel"
-      },
     # App.chat = App.cable.subscriptions.create {
-    #   channel: "ChatChannel"
-    #   },
+    #  channel: "ChatChannel"
+    },
       connected: ->
 
       disconnected: ->
 
       received: (data) ->
-        if data['message']
+        console.log(data['current_room'])
+        console.log($header)
+        console.log($header.innerHTML)
+        if data['message'] && data['current_room'] == $header.innerHTML
           $new_message_body.val('')
           $messages.append data['message']
           messages_to_bottom()
@@ -38,7 +38,7 @@ jQuery(document).on 'turbolinks:load', ->
     $new_message_form.submit (e) ->
       $this = $(this)
       contents = $new_message_body.val()
-      App[$chat_room_name].send_message contents, $header.text()
+      App.chat.send_message contents, $header.text()
 
       e.preventDefault()
       return false

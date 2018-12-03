@@ -1,8 +1,7 @@
-<%= hidden_field_tag "chat_room_name", @chatroom.chat_room_name, { :id => "chat_room_name" } %>
 
 <div class="chatroom-wrapper">
   <div class="chatroom-header">
-    <h1><%= @chatroom.chat_room_name %></h1>
+    <h1 id="header"><%= @chatroom.chat_room_name %></h1>
   </div>
 
   <div id="messages">
@@ -13,7 +12,7 @@
 
   <!-- might need to be form_with -->
   <div class="form-wrapper">
-    <%= form_with url: "/chatrooms/CS1530", html: {id: 'new-message'} do |form| %>
+    <%= form_with url: @chatroom, html: {id: 'new-message'} do |form| %>
       <%= form.text_area :contents, type: 'contents', placeholder: "Message", class: 'text-field', id: 'contents' %>
       <%= form.submit 'Send', :class => 'submit-message' %>
     <% end %>
