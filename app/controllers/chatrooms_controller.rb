@@ -20,6 +20,12 @@ class ChatroomsController < ApplicationController
     @rooms = Chatroom.all
   end
 
+  # returns all starred chatrooms
+  def starred
+    @chatroom = Chatroom.new
+    @rooms = current_user.get_starred_chatrooms
+  end
+
   # returns all messages in specific chatroom
   def show
     @messages = Message.order(created_at: :asc)

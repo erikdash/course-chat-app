@@ -62,8 +62,10 @@ class UsersController < Clearance::UsersController
     room = Chatroom.find_by(id: params.require(:room))
     if room.users.find_by(id: user.id).nil?
       user.chatrooms << room
+      room.number_of_stars += 1
     else
       user.chatrooms.delete(room)
+      room.number_of_stars -= 1
     end
     # room.users << user
     unless user.save && room.save

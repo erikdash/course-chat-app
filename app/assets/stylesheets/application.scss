@@ -15,7 +15,7 @@
  */
 
 /* ========================================================
-   Mixins
+   Mixins and Global Styles
    ======================================================== */
 
 @mixin submit-button-yellow() {
@@ -52,6 +52,15 @@
   line-height: 1.5;
   border: 1px solid #e6e6e6;
   border-radius: 24px;
+}
+
+.flash {
+  color: #b0445a;
+  background: #f2dede;
+  font-size: 20px;
+  border-top: 1px solid #b0445a;
+  border-bottom: 1px solid #b0445a;
+  text-align: center;
 }
 
 /* ========================================================
@@ -394,37 +403,58 @@
 
   /* Individual room cards */
 
-  .room-card {
-    position: relative;
-    max-width: 200px;
-    background: #fff;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
-    transition: 0.3s;
+  .room-item {
+    width: 200px;
 
-    &:hover {
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+    .room-card {
+      position: relative;
+      height: 150px;
+      background: #fff;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+      transition: 0.3s;
+
+      &:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+      }
+
+      h4 {
+        padding: 8px 0;
+        margin-top: 0;
+        color: #fff;
+        background: #003874;
+        text-align: center;
+      }
+
+      p {
+        margin-left: 10px;
+      }
+
+      /* Makes the link_to method take up the entire div and make it clickable */
+
+      span {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+      }
     }
 
-    h4 {
-      padding: 8px 0;
-      margin-top: 0;
-      color: #fff;
-      background: #003874;
-      text-align: center;
-    }
+    .star {
+      width: 20px;
+      margin: 15px auto;
 
-    p {
-      margin-left: 10px;
-    }
+      button {
+        background: url(../images/starred-outline.svg);
+        height: 50px;
+        width: 50px;
+        border: none;
+        cursor: pointer;
 
-    /* Makes the link_to method take up the entire div and make it clickable */
-
-    span {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      height: 100%;
-      width: 100%;
+        .filled {
+          background: url(../images/starred-filled.svg);
+        }
+      }
     }
   }
 }
