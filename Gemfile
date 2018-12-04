@@ -75,3 +75,6 @@ gem "figaro"
 
 # jQuery
 gem 'jquery-rails'
+
+# Shrine gem for document uploading
+gem 'shrine', '~> 2.6'

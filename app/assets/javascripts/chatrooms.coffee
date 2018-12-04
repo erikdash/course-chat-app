@@ -7,6 +7,7 @@ jQuery(document).on 'turbolinks:load', ->
   $new_message_form = $('#new-message')
   $new_message_body = $new_message_form.find('#contents')
   $chat_room_name = $('#chat_room_name').val()
+  $new_message_attachment = $new_message_form.find('#message-attachment')
 
   if $messages.length > 0
 
@@ -32,13 +33,21 @@ jQuery(document).on 'turbolinks:load', ->
           $messages.append data['message']
           messages_to_bottom()
 
-      send_message: (message, current_room) ->
-        @perform 'send_message', message: message, current_room: current_room
+      send_message: (message, current_room, file_uri, original_name) ->
+        @perform 'send_message', message: message, current_room: current_room, file_uri: file_uri, original_name: original_name
 
     $new_message_form.submit (e) ->
       $this = $(this)
       contents = $new_message_body.val()
-      App.chat.send_message contents, $header.text()
+      if $new_message_attachment.get(0).files.length > 0 # if file is chosen
+        reader = new FileReader()  # use FileReader API
+        file_name = $new_message_attachment.get(0).files[0].name # get the name of the first chosen file
+        reader.addEventListener "loadend", -> # perform the following action after the file is loaded
+          App.chat.send_message contents, $header.text(), reader.result, file_name
+
+        reader.readAsDataURL $new_message_attachment.get(0).files[0] # read the chosen file
+      else
+        App.chat.send_message contents, $header.text()
 
       e.preventDefault()
       return false
