@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include Clearance::User
   # has_many :messages
-  #has_many :chatrooms # starred chatrooms
+  has_and_belongs_to_many :chatrooms # starred chatrooms
   has_many :notifications
 
   def confirm_email
@@ -22,11 +22,18 @@ class User < ApplicationRecord
   end
 
   def set_starred_chatrooms chatroom
-    self.chatrooms << chatroom
+    # self.chatrooms << chatroom
+    # room = Chatroom.find_by(id: chatroom)
+    # room.users << self.id
+    # self.save
+    # room.save
   end
 
-  def remove_starred_chatroom chatroom_name
-
-
+  def remove_starred_chatroom chatroom
+    # self.chatrooms.delete chatroom
+    # room = Chatroom.find_by(id: chatroom)
+    # room.users.delete self.id
+    # self.save
+    # room.save
   end
 end

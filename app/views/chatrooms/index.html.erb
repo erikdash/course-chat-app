@@ -1,6 +1,6 @@
 <div class="home-wrapper">
   <div class="container">
-    
+
     <!-- Left Radio -->
     <div class="side">
       <ul>
@@ -8,7 +8,7 @@
           <%= button_to 'Home', home_path, method: :get, class: 'side-button selected' %>
         </li>
         <li>
-          <%= button_to 'Starred', home_path, method: :get, class: 'side-button' %>
+          <%= button_to 'Starred', starred_path, method: :get, class: 'side-button' %>
         </li>
         <li>
           <%= button_to 'Profile', profile_path, method: :get, class: 'side-button' %>
@@ -39,14 +39,25 @@
 
       <div class="rooms">
         <% @rooms.each do |room| %>
-          <div class="room-card">
-            <h4><%= room.chat_room_name %></h4>
-            <p>📅: <%= room.date_created %></p>
-            <p>⭐: <%= room.number_of_stars %></p>
-            <%= link_to content_tag(:span, ""), chat_room_path_url(room) %>
+          <div class="room-item">
+            <div class="room-card">
+              <h4><%= room.chat_room_name %></h4>
+              <p>📅: <%= room.date_created %></p>
+              <p>⭐: <%= room.number_of_stars %></p>
+              <%= link_to content_tag(:span, ""), chat_room_path_url(room) %>
+            </div>
+            <div class="star">
+              <% if room.users.count > 0 %>
+                <%= button_to 'user/set_starred_chatrooms', params: {:controller => "user", :action => "set_starred_chatrooms", :room => room, :user => current_user} do %>
+                <% end %>
+              <% else %>
+                <%= button_to 'user/set_starred_chatrooms', params: {:controller => "user", :action => "set_starred_chatrooms", :room => room, :user => current_user}, class: 'filled' do %>
+                <% end %>
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>
-    </div> 
+    </div>
   </div>
 </div>

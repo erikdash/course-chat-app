@@ -58,22 +58,32 @@ class UsersController < Clearance::UsersController
   # Sets the user's chatrooms to be whatever they pass in
   # Throws an error if it could not save
   def set_starred_chatrooms
-    @user.set_starred_chatrooms(params.require(:chatrooms))
-    unless @user.save
+    user = User.find_by(id: params.require(:user))
+    room = Chatroom.find_by(id: params.require(:room))
+    if room.users.find_by(id: user.id).nil?
+      user.chatrooms << room
+      room.number_of_stars += 1
+    else
+      user.chatrooms.delete(room)
+      room.number_of_stars -= 1
+    end
+    # room.users << user
+    unless user.save && room.save
       flash.now[:error] = "Could not set chatrooms"
     end
+    redirect_to "/index"
   end
 
-  def remove_starred_chatroom
-    @user.chatrooms.delete(Chatroom.find_by(id: params.require(:id)))
-    if user.chatrooms.find(Chatroom.find_by(id: params.require(:id)))
-      flash.now[:error] = "Could not unstar chatroom"
-    end
-
-    unless @user.save
-      flash.now[:error] = "Could not update chatrooms"
-    end
-  end
+  # def remove_starred_chatroom
+  #   @user.chatrooms.delete(Chatroom.find_by(id: params.require(:id)))
+  #   if user.chatrooms.find(Chatroom.find_by(id: params.require(:id)))
+  #     flash.now[:error] = "Could not unstar chatroom"
+  #   end
+  #
+  #   unless @user.save
+  #     flash.now[:error] = "Could not update chatrooms"
+  #   end
+  # end
 
   # Sets the user's permissions to be whatever they pass in
   # Throws an error if it could not save

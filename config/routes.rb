@@ -23,9 +23,11 @@ Rails.application.routes.draw do
   # User routes
   get '/profile' => 'users#edit', as: 'profile'
   patch '/users' => 'users#update'
+  post 'user/set_starred_chatrooms' => 'users#set_starred_chatrooms'
 
   # Chatroom routes
   get '/index' => 'chatrooms#index', as: 'home'
+  get '/starred' => 'chatrooms#starred', as: 'starred'
   get '/chatrooms/:chatroom' =>'chatrooms#show', as: :chat_room_path
   post '/chatrooms/:chatroom' =>'chatrooms#show', as: :chat_room_send_path
 

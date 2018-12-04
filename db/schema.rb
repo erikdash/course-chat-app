@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_215854) do
+ActiveRecord::Schema.define(version: 2018_12_03_225116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2018_12_03_215854) do
     t.integer "number_of_stars"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "chatrooms_users", id: false, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "chatroom_id"
+    t.index ["chatroom_id"], name: "index_users_and_chatrooms_on_chatroom_id"
+    t.index ["user_id"], name: "index_users_and_chatrooms_on_user_id"
   end
 
   create_table "documents", force: :cascade do |t|
