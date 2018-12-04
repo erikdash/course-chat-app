@@ -1,6 +1,6 @@
 <div class="home-wrapper">
   <div class="container">
-    
+
     <!-- Left Radio -->
     <div class="side">
       <ul>
@@ -40,13 +40,21 @@
       <div class="rooms">
         <% @rooms.each do |room| %>
           <div class="room-card">
-            <h4><%= room.chat_room_name %></h4>
-            <p>📅: <%= room.date_created %></p>
-            <p>⭐: <%= room.number_of_stars %></p>
-            <%= link_to content_tag(:span, ""), chat_room_path_url(room) %>
+            <%= link_to chat_room_path_url(room) do %>
+              <div class="linked-section">
+                <h4><%= room.chat_room_name %></h4>
+                <p>📅: <%= room.date_created %></p>
+              </div>
+            <% end %>
+            <p id="star"><%= button_to 'user/set_starred_chatrooms', params: {:controller => "user", :action => "set_starred_chatrooms", :room => room, :user => current_user} do %>
+              ⭐: <%= room.users.count %>
+              <% end %>
+            </p>
           </div>
+
+
         <% end %>
       </div>
-    </div> 
+    </div>
   </div>
 </div>

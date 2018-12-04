@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   # Email confirmation
   get "/confirm_email/:token" => "email_confirmations#update", as: "confirm_email"
 
+  # Star rooms
+  post "user/set_starred_chatrooms" => "users#set_starred_chatrooms"
+
   # Root
   root 'sessions#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
