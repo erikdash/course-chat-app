@@ -106,4 +106,7 @@ Rails.application.configure do
   :enable_starttls_auto => true
   }
 
+  # ActionCable config
+  config.action_cable.url = 'wss://mighty-coast-82167.herokuapp.com/cable'
+  config.action_cable.allowed_request_origins = [ 'https://mighty-coast-82167.herokuapp.com', 'http://mighty-coast-82167.herokuapp.com' ]
 end
