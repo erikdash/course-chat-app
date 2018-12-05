@@ -12,19 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-readyselector
 //= require turbolinks
 //= require_tree .
 //= require rails-ujs
 //= require activestorage
 
-$(document).ready(function () {
-  /**
-   * Add and remove the selected class from the left radio buttons.
-   */
-  $('input').click(function () {
-      $('input:not(:checked)').parent().removeClass("selected");
-      $('input:checked').parent().addClass("selected");
-  });
+$(".chatrooms.index").ready(function() {
 
   /**
    * Display the modal on button click.
@@ -47,17 +41,58 @@ $(document).ready(function () {
         addRoomModal.style.display = "none";
     }
   }
-});
+})
 
-/**
-   * Chatroom enter key submits the message, or shift click to go to a new line.
-   */
-  $("#contents").keypress(function (e) {
-    if(e.which == 13 && !e.shiftKey) {        
-        $(this).closest("form").submit();
-        e.preventDefault();
-        return false;
+$(".chatrooms.starred").ready(function() {
+  var addRoom = document.getElementById('add-room');
+  var addRoomModal = document.getElementById('add-room-modal');
+  var closeRoomModal = document.getElementById('close-modal');
+
+  addRoom.onclick = function() {
+    addRoomModal.style.display = "block";
+  }
+
+  closeRoomModal.onclick = function() {
+    addRoomModal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == addRoomModal) {
+        addRoomModal.style.display = "none";
     }
-  });
+  }
+})
 
+$(".users.edit").ready(function() {
+  var addRoom = document.getElementById('add-room');
+  var addRoomModal = document.getElementById('add-room-modal');
+  var closeRoomModal = document.getElementById('close-modal');
+
+  addRoom.onclick = function() {
+    addRoomModal.style.display = "block";
+  }
+
+  closeRoomModal.onclick = function() {
+    addRoomModal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == addRoomModal) {
+        addRoomModal.style.display = "none";
+    }
+  }
+})
+
+$(".chatrooms.show").ready(function() {
+  document.getElementById('submit-button').addEventListener("click", submitForm, false);
+
+  /**
+   * Clear the text field.
+   */
+  function submitForm(e) {
+    $(this).closest("form").submit();
+    $("#contents").val('');
+    e.preventDefault();
+  }
+})
 

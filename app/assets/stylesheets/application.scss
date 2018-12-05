@@ -448,12 +448,13 @@
         background: url(../images/starred-outline.svg);
         height: 50px;
         width: 50px;
+        margin-left: -15px;
         border: none;
         cursor: pointer;
+      }
 
-        .filled {
-          background: url(../images/starred-filled.svg);
-        }
+      .filled {
+        background: url(../images/starred-filled.svg);
       }
     }
   }
@@ -508,33 +509,39 @@
   }
 }
 
-// .messages {
-//   height: 70vh;
-// }
+#all-messages {
+  padding: 20px 30px;
+  margin: 20px 35px 0 35px;
+  height: 60vh;
+  background: #fff;
+  border-radius: 12px;
+  overflow: auto;
+}
+
+.messages {
+  margin-bottom: 5px;
+
+  br {
+    margin-bottom: 5px;
+  }
+}
 
 .form-wrapper {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 100px;
-  width: 100%;
+  margin: 15px 35px;
   overflow: hidden;
 }
 
 .text-field {
   display: inline-block;
-  width: 75%;
+  width: 50%;
   height: 40px;
-  max-height: 40px;
   padding: 8px 32px;
-  margin-left: 20px;
   color: #777;
   background: #e6e6e6;
   font-weight: bold;
   line-height: 1.5;
   border: 1px solid #e6e6e6;
   border-radius: 12px;
-  resize: none;
 }
 
 .submit-message {

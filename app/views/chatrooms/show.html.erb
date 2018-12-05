@@ -3,7 +3,7 @@
     <h1 id="header"><%= @chatroom.chat_room_name %></h1>
   </div>
 
-  <div id="messages">
+  <div id="all-messages">
     <% if @chatroom.messages %>
       <%= render @chatroom.messages %>
     <% end %>
@@ -11,13 +11,10 @@
 
   <div class="form-wrapper">
     <%= form_with url: @chatroom, html: {id: 'new-message'} do |form| %>
-      <%= form.text_area :contents, type: 'contents', placeholder: "Message", class: 'text-field', id: 'contents' %>
-      <div class="form-group">
-        <%= form.file_field :attachment, id: 'message-attachment' %>
-        <%# <br> %>
-        <!--<small>File extensions: .txt, .pdf, .docx, .xlx, .java, .c, .cs, .js, .py, .rb, .html, .css, .cpp, .pptx</small>-->
-      </div>
-      <%= form.submit 'Send', :class => 'submit-message' %>
+      <%= form.text_field :contents, type: 'contents', placeholder: "Message", maxlength: 100, class: 'text-field', id: 'contents', autocomplete: 'off' %>
+      <%= form.submit 'Send', id: 'submit-button', class: 'submit-message' %>
+      <%= form.file_field :attachment, id: 'message-attachment', class: 'submit-message' %>
+      <small>File extensions: .txt, .pdf, .docx, .xlx, .java, .c, .cs, .js, .py, .rb, .html, .css, .cpp, .pptx</small>
     <% end %>
   </div>
 </div>

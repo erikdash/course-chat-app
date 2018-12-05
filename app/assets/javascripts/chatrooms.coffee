@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery(document).on 'turbolinks:load', ->
-  $messages = $('#messages')
+  $messages = $('#all-messages')
   $header = $('#header')
   $new_message_form = $('#new-message')
   $new_message_body = $new_message_form.find('#contents')
