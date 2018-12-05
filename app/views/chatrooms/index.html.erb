@@ -44,7 +44,7 @@
               <%= link_to content_tag(:span, ""), chat_room_path_url(room) %>
             </div>
             <div class="star">
-              <% if room.users.count < 1 %>
+              <% if room.users.find_by(id: current_user.id).nil? %>
                 <%= button_to 'user/set_starred_chatrooms', params: {:controller => "user", :action => "set_starred_chatrooms", :room => room, :user => current_user} do %>
                 <% end %>
               <% else %>
