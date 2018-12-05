@@ -13,8 +13,7 @@
     <%= form_with url: @chatroom, html: {id: 'new-message'} do |form| %>
       <%= form.text_field :contents, type: 'contents', placeholder: "Message", maxlength: 100, class: 'text-field', id: 'contents', autocomplete: 'off' %>
       <%= form.submit 'Send', id: 'submit-button', class: 'submit-message' %>
-      <%= form.file_field :attachment, id: 'message-attachment', class: 'submit-message' %>
-      <small>File extensions: .txt, .pdf, .docx, .xlx, .java, .c, .cs, .js, .py, .rb, .html, .css, .cpp, .pptx</small>
+      <%= form.file_field :attachment, id: 'message-attachment' %>
     <% end %>
   </div>
 </div>

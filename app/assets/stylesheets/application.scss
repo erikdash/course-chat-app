@@ -546,4 +546,14 @@
 
 .submit-message {
   @include submit-button-yellow();
+  vertical-align: bottom;
+}
+
+#message-attachment {
+  width: 200px;
+  padding: 18px;
+  background: #fbc33c;
+  border-radius: 8px;
+  vertical-align: bottom;
+  overflow: hidden;
 }
