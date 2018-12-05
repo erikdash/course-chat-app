@@ -41,7 +41,7 @@
               <h4><%= room.chat_room_name %></h4>
               <p>📅: <%= room.date_created %></p>
               <p>⭐: <%= room.number_of_stars %></p>
-              <%= link_to content_tag(:span, ""), chat_room_path_url(room) %>
+              <%= link_to content_tag(:span, ""), chat_room_path_url(room), data: { turbolinks: false } %>
             </div>
           </div>
         <% end %>
