@@ -52,6 +52,7 @@
   line-height: 1.5;
   border: 1px solid #e6e6e6;
   border-radius: 24px;
+  outline: none;
 }
 
 .flash {
@@ -147,6 +148,7 @@
     border: 1px solid #e6e6e6;
     border-radius: 24px;
     transition: .25s ease-out;
+    outline: none;
 
     &:focus {
       box-shadow: 0 0 5px #007bff;
