@@ -1,4 +1,4 @@
-class UsersAndChatrooms < ActiveRecord::Migration[5.2]
+class ChatroomsUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :chatrooms_users, id: false do |t|
       t.timestamps null: false
