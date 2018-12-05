@@ -23,6 +23,7 @@ Shrine::Attacher.validate do
                                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document', # .docx
                                    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', # .xlsx
                                    'application/vnd.openxmlformats-officedocument.presentationml.presentation', # .pptx
+                                   'application/vnd.ms-powerpoint',
                                    'text/plain',
                                    'text/css',
                                    'application/zip',
