@@ -43,6 +43,7 @@ jQuery(document).on 'turbolinks:load', ->
         file_name = $new_message_attachment.get(0).files[0].name # get the name of the first chosen file
         reader.addEventListener "loadend", -> # perform the following action after the file is loaded
           App.chat.send_message contents, $header.text(), reader.result, file_name
+          $new_message_attachment.val('')
 
         reader.readAsDataURL $new_message_attachment.get(0).files[0] # read the chosen file
       else

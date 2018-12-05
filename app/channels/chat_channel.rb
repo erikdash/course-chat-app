@@ -9,8 +9,8 @@ class ChatChannel < ApplicationCable::Channel
 
   def send_message(data)
     chatroom = Chatroom.find_by(chat_room_name: data['current_room'])
-    message = Message.create(contents: data['message'], user: current_user, chatroom: chatroom, date_sent: DateTime.now)
-
+    message = Message.new(contents: data['message'], user: current_user, chatroom: chatroom, date_sent: DateTime.now)
+    
     # Checks if a file is attached
     if data['file_uri']
       message.attachment_name = data['original_name']
